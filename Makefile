@@ -93,6 +93,12 @@ else ifeq ($(UNAME_ARCH),x86_64)
 endif
 endif
 
+ifeq ($(UNAME_OS),Linux)
+ifeq ($(UNAME_ARCH),$(filter $(UNAME_ARCH), arm64 aarch64))
+        GOARCH=arm64
+endif
+endif
+
 # If run with DOCKER= or within a container, unset DOCKER_RUN so all commands
 # are not proxied via docker container.
 ifeq ($(DOCKER),)
